@@ -1,8 +1,8 @@
-namespace CodeBase.SceneManager {
 using System;
-using UnityEngine.SceneManagement;
-    public static class Loader {
-        public enum Scene {
+
+namespace CodeBase.ScreenManager {
+    public static class ScreenManager {
+        public enum Screen {
             Loading,
             MainMenu,
             Preferences,
@@ -13,14 +13,14 @@ using UnityEngine.SceneManagement;
 
         }
         
-        private static Scene previousScene; 
+        private static Screen _previousScreen; 
         private static Action onLoaderCallBack;
-        public static void Load(Scene scene, bool useLoadingScreen = true) {
-            previousScene = (Scene)Enum.Parse(typeof(Scene), SceneManager.GetActiveScene().name);
-            onLoaderCallBack = () => { SceneManager.LoadSceneAsync(scene.ToString()); };
+        public static void Load(Screen screen, bool useLoadingScreen = true) {
+            _previousScreen = (Screen)Enum.Parse(typeof(Screen), UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            onLoaderCallBack = () => { UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(screen.ToString()); };
 
             if (useLoadingScreen) {
-                SceneManager.LoadScene(Scene.Loading.ToString());
+                UnityEngine.SceneManagement.SceneManager.LoadScene(Screen.Loading.ToString());
             } else {
                 
                 LoaderCallBack();
@@ -34,7 +34,7 @@ using UnityEngine.SceneManagement;
             }
         }
         public static void LoadPreviousScene(bool useLoadingScreen = true) {
-            Load(previousScene, useLoadingScreen);
+            Load(_previousScreen, useLoadingScreen);
         }
     }
 }

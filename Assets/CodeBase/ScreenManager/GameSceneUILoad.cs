@@ -1,9 +1,10 @@
+using CodeBase.ScreenManager;
 using UnityEngine;
 
 namespace CodeBase.SceneManager {
     public class GameSceneUILoad : MonoBehaviour {
         public void ReloadScene() {
-            Loader.Load(Loader.Scene.Preferences);
+            ScreenManager.ScreenManager.Load(ScreenManager.ScreenManager.Screen.Preferences);
         }
     }
 }

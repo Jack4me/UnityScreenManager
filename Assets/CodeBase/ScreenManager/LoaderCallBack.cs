@@ -13,7 +13,7 @@ namespace CodeBase.ScreenManager {
         }
 
         private void InvokeLoaderCallback() {
-            Loader.LoaderCallBack();
+            ScreenManager.LoaderCallBack();
         }
     }
 }

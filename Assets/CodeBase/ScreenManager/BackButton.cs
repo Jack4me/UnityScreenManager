@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CodeBase.SceneManager;
+using CodeBase.ScreenManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class BackButton : MonoBehaviour
     }
 
     private void OnBackButtonClicked() {
-        Loader.LoadPreviousScene(useLoadingScreen: false); 
+        ScreenManager.LoadPreviousScene(useLoadingScreen: false); 
     }
     
     
