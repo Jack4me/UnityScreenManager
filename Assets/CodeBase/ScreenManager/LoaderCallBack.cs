@@ -1,7 +1,7 @@
-using System;
+using CodeBase.SceneManager;
 using UnityEngine;
 
-namespace CodeBase.SceneManager {
+namespace CodeBase.ScreenManager {
     public class LoaderCallBack : MonoBehaviour {
         private bool IsFirstUpdate = true;
 
