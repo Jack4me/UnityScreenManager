@@ -5,9 +5,9 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour {
     private static ScreenManager instance;
 
-    public GameObject mainMenuPanel;
-    public GameObject settingsPanel;
-    public GameObject pauseMenuPanel;
+    public GameObject mainMenuScreen;
+    public GameObject settingsScreen;
+    public GameObject ShopScreen;
 
     void Awake() {
         if (instance != null) {
@@ -21,22 +21,29 @@ public class ScreenManager : MonoBehaviour {
 
     public void ShowPanel(string panelName) {
 //        mainMenuPanel.SetActive(false);
-        settingsPanel.SetActive(false);
-    //    pauseMenuPanel.SetActive(false);
-
+        settingsScreen.SetActive(false);
+        //    pauseMenuPanel.SetActive(false);
+        HideAllPanels();
         switch (panelName) {
             case "MainMenu":
-                mainMenuPanel.SetActive(true);
+                mainMenuScreen.SetActive(true);
                 break;
             case "Settings":
-                settingsPanel.SetActive(true);
+                settingsScreen.SetActive(true);
                 break;
             case "PauseMenu":
-                pauseMenuPanel.SetActive(true);
+                ShopScreen.SetActive(true);
                 break;
             default:
                 Debug.LogError("Unknown panel: " + panelName);
                 break;
         }
+    }
+
+    private void HideAllPanels() {
+        // Отключаем все панели
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        ShopScreen.SetActive(false);
     }
 }
