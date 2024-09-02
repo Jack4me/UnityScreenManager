@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CodeBase.SceneManager {
     public class GameSceneUILoad : MonoBehaviour {
         public void ReloadScene() {
-            ScreenManager.ScreenManager.Load(ScreenManager.ScreenManager.ScreenType.Preferences);
+            ScreenManager.SceneManager.Load(ScreenManager.SceneManager.SceneType.Preferences);
         }
     }
 }

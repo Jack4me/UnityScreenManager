@@ -1,8 +1,8 @@
 using System;
 
 namespace CodeBase.ScreenManager {
-    public static class ScreenManager {
-        public enum ScreenType { 
+    public static class SceneManager {
+        public enum SceneType { 
             Loading,
             MainMenu,
             Preferences,
@@ -13,16 +13,15 @@ namespace CodeBase.ScreenManager {
 
         }
         
-        private static ScreenType _previousScreenType; 
+        private static SceneType _previousSceneType; 
         private static Action onLoaderCallBack;
-        public static void Load(ScreenType screenType, bool useLoadingScreen = true) {
-            _previousScreenType = (ScreenType)Enum.Parse(typeof(ScreenType), UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-            onLoaderCallBack = () => { UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(screenType.ToString()); };
+        public static void Load(SceneType sceneType, bool useLoadingScreen = true) {
+            _previousSceneType = (SceneType)Enum.Parse(typeof(SceneType), UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            onLoaderCallBack = () => { UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneType.ToString()); };
 
             if (useLoadingScreen) {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(ScreenType.Loading.ToString());
+                UnityEngine.SceneManagement.SceneManager.LoadScene(SceneType.Loading.ToString());
             } else {
-                
                 LoaderCallBack();
             }
         }
@@ -34,7 +33,7 @@ namespace CodeBase.ScreenManager {
             }
         }
         public static void LoadPreviousScene(bool useLoadingScreen = true) {
-            Load(_previousScreenType, useLoadingScreen);
+            Load(_previousSceneType, useLoadingScreen);
         }
     }
 }

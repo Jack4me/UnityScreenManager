@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2932115824484986530}
   - component: {fileID: 3028298562949890838}
   m_Layer: 5
-  m_Name: Preferences
+  m_Name: PreferencesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
