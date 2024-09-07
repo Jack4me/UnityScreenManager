@@ -9,23 +9,23 @@ namespace CodeBase.ScreenManager {
         
 
         public void LoadFirstLevel() {
-            SceneManager.Load(SceneManager.SceneType.FirstLevel);
+            SceneHandler.Load(SceneHandler.SceneType.FirstLevel);
         } 
         public void LoadSecondLevel() {
-            SceneManager.Load(SceneManager.SceneType.SecondLevel);
+            SceneHandler.Load(SceneHandler.SceneType.SecondLevel);
         } 
         public void LoadPreferences() {
-            SceneManager.Load(SceneManager.SceneType.Preferences, false);
+            SceneHandler.Load(SceneHandler.SceneType.Preferences, false);
         }
         
         public void LoadMenu() {
-            SceneManager.Load(SceneManager.SceneType.MainMenu, false);
+            SceneHandler.Load(SceneHandler.SceneType.MainMenu, false);
         } 
         public void LoadChooseLevelMenu() {
-            SceneManager.Load(SceneManager.SceneType.ChooseLevel, false);
+            SceneHandler.Load(SceneHandler.SceneType.ChooseLevel, false);
         } 
         public void LoadShopMenu() {
-            SceneManager.Load(SceneManager.SceneType.Shop, false);
+            SceneHandler.Load(SceneHandler.SceneType.Shop, false);
         } 
     }
 }

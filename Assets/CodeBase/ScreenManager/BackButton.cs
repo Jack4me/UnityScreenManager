@@ -14,7 +14,7 @@ public class BackButton : MonoBehaviour
     }
 
     private void OnBackButtonClicked() {
-        SceneManager.LoadPreviousScene(useLoadingScreen: false); 
+        SceneHandler.LoadPreviousScene(useLoadingScreen: false); 
     }
     
     

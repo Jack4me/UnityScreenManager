@@ -2,10 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace CodeBase.ScreenManager {
+    using UnityEngine.SceneManagement;
+
     public class ScreenManager : MonoBehaviour {
-        [SerializeField] private GameObject HUD;
+        [SerializeField] private GameObject HUDInstance;
         public static ScreenManager instance;
         public Stack<GameObject> screenHistory = new Stack<GameObject>();
+
+        public GameObject mainMenuScreen;
+        public GameObject settingsScreen;
+        public GameObject pauseMenuScreen;
+        public GameObject shopScreen;
 
         void Awake() {
             mainMenuScreen.SetActive(true);
@@ -19,29 +26,37 @@ namespace CodeBase.ScreenManager {
                 DontDestroyOnLoad(gameObject);
             }
 
-
-            HUD = Instantiate(HUD);
-            InitializeHUD(HUD);
+            GameObject hudPrefab = Resources.Load<GameObject>("UI/HUD/HUD");
+            HUDInstance = Instantiate(hudPrefab);
+            DontDestroyOnLoad(HUDInstance);
+            //InitializeHUD(HUDInstance);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public GameObject mainMenuScreen;
-        public GameObject settingsScreen;
-        public GameObject pauseMenuScreen;
-        public GameObject shopScreen;
-
-        public void InitializeHUD(GameObject HUD) {
-            settingsScreen = HUD.transform.Find("SettingsScreen").gameObject;
-
-
-            Debug.Log("HUD инициализирован.");
+        void OnDestroy() {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            InitializeHUD();
+        }
+
+        // Метод для инициализации экранов в HUD
+        public void InitializeHUD() {
+            settingsScreen = HUDInstance.transform.Find("SettingsScreen").gameObject;
+
+
+            Debug.Log("HUD экраны инициализированы для новой сцены: " + SceneManager.GetActiveScene().name);
+        }
+
+
+      
 
         public void ShowScreen(string panelName) {
             HideAllPanels();
 
             GameObject screen = null; // Для хранения текущего экрана
 
-            // Находим нужную панель по имени
             switch (panelName) {
                 case "MainMenu":
                     screen = mainMenuScreen;
@@ -62,6 +77,7 @@ namespace CodeBase.ScreenManager {
 
 
             if (screenHistory.Count > 0) {
+                // here is a error
                 screenHistory.Peek().SetActive(false);
                 Debug.LogError("screenHistory.Count 0");
             }
@@ -72,8 +88,10 @@ namespace CodeBase.ScreenManager {
         }
 
         private void HideAllPanels() {
-            mainMenuScreen.SetActive(false);
-            settingsScreen.SetActive(false);
+            if (mainMenuScreen != null) mainMenuScreen.SetActive(false);
+            if (settingsScreen != null) settingsScreen.SetActive(false);
+            if (pauseMenuScreen != null) pauseMenuScreen.SetActive(false);
+            if (shopScreen != null) shopScreen.SetActive(false);
         }
 
         public void GoBack() {

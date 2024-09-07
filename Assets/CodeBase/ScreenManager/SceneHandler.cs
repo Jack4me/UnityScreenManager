@@ -1,7 +1,7 @@
 using System;
 
 namespace CodeBase.ScreenManager {
-    public static class SceneManager {
+    public static class SceneHandler {
         public enum SceneType { 
             Loading,
             MainMenu,

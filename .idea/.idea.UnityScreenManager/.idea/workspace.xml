@@ -10,8 +10,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/CloseButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/LoaderCallBack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/OpenScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/PersistentUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ScreenManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,7 +78,7 @@
       <workItem from="1725450276455" duration="89000" />
       <workItem from="1725526081745" duration="1196000" />
       <workItem from="1725612734705" duration="5264000" />
-      <workItem from="1725698488990" duration="5843000" />
+      <workItem from="1725698488990" duration="10492000" />
     </task>
     <servers />
   </component>
