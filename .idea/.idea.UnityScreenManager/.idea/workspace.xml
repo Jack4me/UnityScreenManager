@@ -8,6 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/CloseButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/LoaderCallBack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/PersistentUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScreenManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -25,6 +27,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -70,6 +73,11 @@
       <workItem from="1724936611577" duration="1952000" />
       <workItem from="1725261263593" duration="4705000" />
       <workItem from="1725283194250" duration="2157000" />
+      <workItem from="1725351633276" duration="599000" />
+      <workItem from="1725450244472" duration="16000" />
+      <workItem from="1725450276455" duration="89000" />
+      <workItem from="1725526081745" duration="1196000" />
+      <workItem from="1725612734705" duration="5264000" />
     </task>
     <servers />
   </component>

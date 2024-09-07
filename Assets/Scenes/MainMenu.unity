@@ -408,6 +408,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.37
       objectReference: {fileID: 0}
+    - target: {fileID: 2042196155004240061, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      propertyPath: m_Name
+      value: CloseWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042196155004240061, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063930354826563418, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1692795059}
+    - target: {fileID: 2063930354826563418, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063930354826563418, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
       propertyPath: m_Name
       value: PreferencesScreen
@@ -507,7 +527,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 569681331}
   m_SourcePrefab: {fileID: 100100000, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
 --- !u!1 &443192500
 GameObject:
@@ -587,6 +610,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7220797116030547852, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
   m_PrefabInstance: {fileID: 417928219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &569681331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569681326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05804195bbacc348936ee62497aa472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  window: {fileID: 569681326}
 --- !u!1 &598498464
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +787,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1692795059}
         m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: ShowPanel
+        m_MethodName: ShowScreen
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -814,7 +850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &916165862
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1309,7 +1345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuScreen: {fileID: 916165861}
   settingsScreen: {fileID: 569681326}
-  ShopScreen: {fileID: 1696778238}
+  pauseMenuScreen: {fileID: 0}
+  shopScreen: {fileID: 0}
 --- !u!114 &1692795060
 MonoBehaviour:
   m_ObjectHideFlags: 0
