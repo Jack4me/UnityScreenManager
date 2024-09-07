@@ -3,17 +3,17 @@ using UnityEngine;
 namespace CodeBase.ScreenManager {
     public class PersistentUI : MonoBehaviour
     {
-        private static PersistentUI instance;
+        public static PersistentUI instanceUIManager;
 
         void Awake()
         {
-            if (instance != null)
+            if (instanceUIManager != null)
             {
                 Destroy(gameObject);
             }
             else
             {
-                instance = this;
+                instanceUIManager = this;
                 DontDestroyOnLoad(gameObject);
             }
         }

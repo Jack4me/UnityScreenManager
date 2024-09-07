@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenManager : MonoBehaviour {
-    private static ScreenManager instance;
+    [SerializeField] private GameObject HUD;
+    public static ScreenManager instance;
     public Stack<GameObject> screenHistory = new Stack<GameObject>();
 
     void Awake() {
         mainMenuScreen.SetActive(true);
         screenHistory.Push(mainMenuScreen);
-        
+
         if (instance != null) {
             Destroy(gameObject);
         }
@@ -17,6 +18,10 @@ public class ScreenManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+
+        HUD = Instantiate(HUD);
+        InitializeHUD(HUD);
     }
 
     public GameObject mainMenuScreen;
@@ -24,9 +29,14 @@ public class ScreenManager : MonoBehaviour {
     public GameObject pauseMenuScreen;
     public GameObject shopScreen;
 
+    public void InitializeHUD(GameObject HUD) {
+        settingsScreen = HUD.transform.Find("SettingsScreen").gameObject;
+
+
+        Debug.Log("HUD инициализирован.");
+    }
 
     public void ShowScreen(string panelName) {
-        // Сначала скрываем все панели
         HideAllPanels();
 
         GameObject screen = null; // Для хранения текущего экрана
@@ -50,13 +60,13 @@ public class ScreenManager : MonoBehaviour {
                 return;
         }
 
-      
+
         if (screenHistory.Count > 0) {
             screenHistory.Peek().SetActive(false);
-                Debug.LogError("screenHistory.Count 0" );
+            Debug.LogError("screenHistory.Count 0");
         }
 
-       
+
         screen.SetActive(true);
         screenHistory.Push(screen);
     }
@@ -65,11 +75,10 @@ public class ScreenManager : MonoBehaviour {
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
     }
-    public void GoBack()
-    {
-        if (screenHistory.Count > 1)
-        {
-                Debug.LogError("screenHistory.Count 01" );
+
+    public void GoBack() {
+        if (screenHistory.Count > 1) {
+            Debug.LogError("screenHistory.Count 01");
             screenHistory.Pop().SetActive(false);
             screenHistory.Peek().SetActive(true);
         }
