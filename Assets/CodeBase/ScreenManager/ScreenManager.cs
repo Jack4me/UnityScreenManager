@@ -153,6 +153,7 @@ public class ScreenManager : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        Debug.Log("name" + scene.name);
         LoadScreensForScene(scene.name);
     }
 
@@ -163,7 +164,7 @@ public class ScreenManager : MonoBehaviour {
             DontDestroyOnLoad(HUDInstance);
         }
     }
-
+    
     private void LoadScreensForScene(string sceneName) {
         // Поиск конфигурации экранов для текущей сцены
         foreach (var config in screenConfigs) {
