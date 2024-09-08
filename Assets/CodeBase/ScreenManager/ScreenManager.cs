@@ -15,6 +15,7 @@ namespace CodeBase.ScreenManager {
         public GameObject shopScreen;
 
         void Awake() {
+
             mainMenuScreen.SetActive(true);
             screenHistory.Push(mainMenuScreen);
 
@@ -26,10 +27,13 @@ namespace CodeBase.ScreenManager {
                 DontDestroyOnLoad(gameObject);
             }
 
-            GameObject hudPrefab = Resources.Load<GameObject>("UI/HUD/HUD");
-            HUDInstance = Instantiate(hudPrefab);
-            DontDestroyOnLoad(HUDInstance);
-            //InitializeHUD(HUDInstance);
+            if (HUDInstance == null) {
+                GameObject hudPrefab = Resources.Load<GameObject>("UI/HUD/HUD");
+                HUDInstance = Instantiate(hudPrefab);
+                DontDestroyOnLoad(HUDInstance);
+            } else {
+                Debug.Log("HUD уже существует, новый экземпляр не создаётся.");
+            }
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -43,6 +47,7 @@ namespace CodeBase.ScreenManager {
 
         // Метод для инициализации экранов в HUD
         public void InitializeHUD() {
+            
             settingsScreen = HUDInstance.transform.Find("SettingsScreen").gameObject;
 
 
@@ -76,13 +81,20 @@ namespace CodeBase.ScreenManager {
             }
 
 
+            // if (screenHistory.Count > 0) {
+            //     // here is a error
+            //     screenHistory.Peek().SetActive(false);
+            //     Debug.LogError("screenHistory.Count 0");
+            // }
+
             if (screenHistory.Count > 0) {
-                // here is a error
-                screenHistory.Peek().SetActive(false);
-                Debug.LogError("screenHistory.Count 0");
+                GameObject previousScreen = screenHistory.Peek();
+                if (previousScreen != null) {
+                    previousScreen.SetActive(false);
+                } else {
+                    Debug.LogWarning("Предыдущий экран был уничтожен.");
+                }
             }
-
-
             screen.SetActive(true);
             screenHistory.Push(screen);
         }
@@ -96,9 +108,18 @@ namespace CodeBase.ScreenManager {
 
         public void GoBack() {
             if (screenHistory.Count > 1) {
-                Debug.LogError("screenHistory.Count 01");
-                screenHistory.Pop().SetActive(false);
-                screenHistory.Peek().SetActive(true);
+                // Проверяем, существует ли объект
+                GameObject currentScreen = screenHistory.Pop();
+                if (currentScreen != null) {
+                    currentScreen.SetActive(false);
+                }
+
+                GameObject previousScreen = screenHistory.Peek();
+                if (previousScreen != null) {
+                    previousScreen.SetActive(true);
+                } else {
+                    Debug.LogWarning("Previous screen is missing or destroyed.");
+                }
             }
         }
     }

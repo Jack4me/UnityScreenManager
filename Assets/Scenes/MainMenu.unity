@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5986ba216f756f54b8cc939d573b5569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUDInstance: {fileID: 7054739747012589335, guid: cec99db670b856540a6c7f739e7726c7, type: 3}
+  HUDInstance: {fileID: 0}
   mainMenuScreen: {fileID: 916165861}
   settingsScreen: {fileID: 0}
   pauseMenuScreen: {fileID: 0}
