@@ -11,7 +11,7 @@ namespace CodeBase.ScreenManager {
         }
 
         private void OnOpenHUDButtonClick() {
-            ScreenManager.instance.ShowScreen(ScreenName);
+         //   ScreenManager.instance.ShowScreen(ScreenName);
         }
     }
 }
