@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: MainMenu
   screens:
-  - {fileID: 4687409254541858121, guid: c6d1e82d74ac1e44cbd793afb52b8334, type: 3}
+  - {fileID: 3663263367005585441, guid: 0a4c2ae8170705b449821cb2a97ffe5c, type: 3}
