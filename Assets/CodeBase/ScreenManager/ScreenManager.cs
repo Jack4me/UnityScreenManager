@@ -131,6 +131,7 @@ public class ScreenManager : MonoBehaviour {
     public static ScreenManager instance;
     public Stack<GameObject> screenHistory = new Stack<GameObject>();
 
+    public GameObject[] screensTest;
     // Список конфигураций для каждой сцены
     [SerializeField] private ScreenConfig[] screenConfigs;
 
@@ -168,8 +169,9 @@ public class ScreenManager : MonoBehaviour {
     private void LoadScreensForScene(string sceneName) {
         // Поиск конфигурации экранов для текущей сцены
         foreach (var config in screenConfigs) {
-            if (config.name == sceneName) {
+            if (config.SceneName == sceneName) {
                 InitializeScreens(config.screens);
+                Debug.Log(config.SceneName  +"config.name");
                 return;
             }
         }
@@ -183,7 +185,7 @@ public class ScreenManager : MonoBehaviour {
         // Инициализируем экраны для данной сцены
         foreach (GameObject screenPrefab in screens) {
             GameObject screen = Instantiate(screenPrefab, HUDInstance.transform);
-            screen.SetActive(false);  // Все экраны скрыты по умолчанию
+            screen.SetActive(true);  // Все экраны скрыты по умолчанию
         }
 
         // Активируем первый экран, например, главное меню
