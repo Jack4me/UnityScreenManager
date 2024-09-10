@@ -2,30 +2,10 @@ using CodeBase.ScreenManager;
 using UnityEngine;
 
 namespace CodeBase.Scene {
-    
-
-    public class SceneLoader : MonoBehaviour
-    {
+    public class SceneLoader : MonoBehaviour {
         
-
-        public void LoadFirstLevel() {
-            SceneHandler.Load(SceneHandler.SceneType.FirstLevel);
-        } 
-        public void LoadSecondLevel() {
-            SceneHandler.Load(SceneHandler.SceneType.SecondLevel);
-        } 
-        public void LoadPreferences() {
-            SceneHandler.Load(SceneHandler.SceneType.Preferences, false);
+        public void LoadScene(SceneHandler.SceneType scene, bool useLoadingScreen = true) {
+            SceneHandler.Load(scene, useLoadingScreen);
         }
-        
-        public void LoadMenu() {
-            SceneHandler.Load(SceneHandler.SceneType.MainMenu, false);
-        } 
-        public void LoadChooseLevelMenu() {
-            SceneHandler.Load(SceneHandler.SceneType.ChooseLevel, false);
-        } 
-        public void LoadShopMenu() {
-            SceneHandler.Load(SceneHandler.SceneType.Shop, false);
-        } 
     }
 }
