@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e28174d8f89ebe439ccf9a508de095b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScreenName: {fileID: 5799410650969629231}
+  screenName: SettingsScreen
   OpenWindowButton: {fileID: 1591490757308164280}
 --- !u!1 &5799410650969629231
 GameObject:

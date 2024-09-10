@@ -12,6 +12,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/LoaderCallBack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/OpenScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/PersistentUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/ScreenManager/ScreenInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScreenConfig/ScreenConfig.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -82,6 +83,7 @@
       <workItem from="1725698488990" duration="10492000" />
       <workItem from="1725780964325" duration="8273000" />
       <workItem from="1725871918403" duration="2964000" />
+      <workItem from="1725960675844" duration="2415000" />
     </task>
     <servers />
   </component>

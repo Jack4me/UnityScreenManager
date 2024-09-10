@@ -246,6 +246,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6583078406991663674}
+    - targetCorrespondingSourceObject: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8785962599358530153}
   m_SourcePrefab: {fileID: 100100000, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
 --- !u!114 &3867640252749605333 stripped
 MonoBehaviour:
@@ -277,6 +280,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   window: {fileID: 4022158686280981983}
   CloseHUDButton: {fileID: 3867640252749605333}
+--- !u!114 &8785962599358530153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022158686280981983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ade4f280defb246a778204829a8d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenName: SettingsScreen
 --- !u!224 &5565744703466066179 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7220797116030547852, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}

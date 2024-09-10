@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace CodeBase.ScreenManager {
     public class OpenScreen : MonoBehaviour {
-        [SerializeField] private GameObject ScreenName;
+        [SerializeField] private string screenName;
         [SerializeField] private Button OpenWindowButton;
 
         private void Start() {
@@ -11,7 +11,7 @@ namespace CodeBase.ScreenManager {
         }
 
         private void OnOpenHUDButtonClick() {
-            ScreenManager.instance.ShowScreen(ScreenName);
+            ScreenManager.instance.ShowScreen(screenName);
         }
     }
 }
