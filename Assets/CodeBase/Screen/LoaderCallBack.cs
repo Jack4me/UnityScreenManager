@@ -1,4 +1,4 @@
-using CodeBase.SceneManager;
+using CodeBase.Scene;
 using UnityEngine;
 
 namespace CodeBase.ScreenManager {

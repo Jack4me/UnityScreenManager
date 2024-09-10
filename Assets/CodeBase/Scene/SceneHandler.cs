@@ -1,6 +1,6 @@
 using System;
 
-namespace CodeBase.ScreenManager {
+namespace CodeBase.Scene {
     public static class SceneHandler {
         public enum SceneType { 
             Loading,

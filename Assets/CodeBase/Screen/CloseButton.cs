@@ -8,7 +8,7 @@ namespace CodeBase.ScreenManager {
 
 
       private void Start() {
-         CloseHUDButton.onClick.AddListener(ScreenManager.instance.GoBack);
+         CloseHUDButton.onClick.AddListener(CodeBase.Screen.ScreenManager.instance.GoBack);
       }
 
       public void CloseWindow() {

@@ -8,8 +8,11 @@ namespace CodeBase.ScreenManager {
 
             void Start() {
                 // Регистрация экрана в реестре ScreenManager
-                ScreenManager.instance.RegisterScreen(screenName, gameObject);
-                gameObject.SetActive(false);  
+                CodeBase.Screen.ScreenManager.instance.RegisterScreen(screenName, gameObject);
+                if (gameObject.CompareTag("Menu") ) {
+                    return;
+                }
+                gameObject.SetActive(false);
             }
         
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeBase.ScreenManager {
+namespace CodeBase.Screen {
     public class PersistentUI : MonoBehaviour
     {
         public static PersistentUI instanceUIManager;

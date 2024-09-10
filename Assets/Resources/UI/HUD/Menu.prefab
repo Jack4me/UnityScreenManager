@@ -355,9 +355,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7687569717430453503}
   - component: {fileID: 2683735116459588665}
+  - component: {fileID: 1795132133291083880}
+  - component: {fileID: 7538317619304778106}
   m_Layer: 5
-  m_Name: 'Menu '
-  m_TagString: Untagged
+  m_Name: Menu
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,6 +401,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenName: SettingsScreen
   OpenWindowButton: {fileID: 1591490757308164280}
+--- !u!114 &1795132133291083880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663263367005585441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ade4f280defb246a778204829a8d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenName: MenuScreen
+--- !u!114 &7538317619304778106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663263367005585441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185720b4f3f196a4ea7fc76485ab9975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenName: MainMenu
+  OpenWindowButton: {fileID: 0}
 --- !u!1 &5799410650969629231
 GameObject:
   m_ObjectHideFlags: 0

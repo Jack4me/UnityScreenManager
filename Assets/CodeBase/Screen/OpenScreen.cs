@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.ScreenManager {
+namespace CodeBase.Screen {
     public class OpenScreen : MonoBehaviour {
         [SerializeField] private string screenName;
         [SerializeField] private Button OpenWindowButton;

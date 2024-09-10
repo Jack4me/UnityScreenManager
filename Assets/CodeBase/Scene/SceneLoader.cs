@@ -1,7 +1,7 @@
-using CodeBase.SceneManager;
+using CodeBase.ScreenManager;
 using UnityEngine;
 
-namespace CodeBase.ScreenManager {
+namespace CodeBase.Scene {
     
 
     public class SceneLoader : MonoBehaviour
