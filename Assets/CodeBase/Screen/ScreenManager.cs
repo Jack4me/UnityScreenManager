@@ -62,13 +62,13 @@ namespace CodeBase.Screen {
             // Инициализируем экраны для данной сцены
             foreach (GameObject screenPrefab in screens) {
                 GameObject screen = Instantiate(screenPrefab, HUDInstance.transform);
-                screen.SetActive(true); // Все экраны скрыты по умолчанию
+                screen.SetActive(false); // Все экраны скрыты по умолчанию
                 screenHistory.Push(screen);
             }
 
             // Активируем первый экран, например, главное меню
             if (screens.Length > 0) {
-                screens[0].SetActive(true);
+                ShowScreen(screens[0].name);
                 Debug.Log(screens.Length + "screens.Length" + screens[0].name);
             }
         }

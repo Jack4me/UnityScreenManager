@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 1795132133291083880}
   - component: {fileID: 7538317619304778106}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: MenuScreen
   m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185720b4f3f196a4ea7fc76485ab9975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenName: MainMenu
-  OpenWindowButton: {fileID: 0}
+  sceneToLoad: 5
+  openWindowButton: {fileID: 1850732321429513666}
 --- !u!1 &5799410650969629231
 GameObject:
   m_ObjectHideFlags: 0
