@@ -69,35 +69,38 @@ using UnityEngine.SceneManagement;
         }
 
         private void RemoveOldScreens() {
-            foreach (Transform child in HUDInstance.transform) {
-                Destroy(child.gameObject);
+            // Удаляем все экраны предыдущей сцены
+            foreach (var screen in screenRegistry.Values) {
+                Destroy(screen);  // Удаляем объект экрана из сцены
             }
+
+            screenRegistry.Clear();  // Очищаем словарь
             screenHistory.Clear();
         }
 
         private void InitializeScreens(ScreenConfig.ScreenInfo[] screensInfo) {
-            screenHistory.Clear();
-            if (screenRegistry.Count > 0) {
-                // Инициализируем экраны для данной сцены
-                foreach (ScreenConfig.ScreenInfo screenInfo in screensInfo) {
-                    GameObject screen = Instantiate(screenInfo.screenPrefab, HUDInstance.transform);
-                    screen.SetActive(screenInfo.isActiveByDefault); // Активируем или деактивируем экран в зависимости от настроек
+            screenHistory.Clear();  // На всякий случай очищаем историю
+            screenRegistry.Clear(); // Очищаем реестр
+
+            // Инициализация экранов для данной сцены
+            foreach (ScreenConfig.ScreenInfo screenInfo in screensInfo) {
+                GameObject screen = Instantiate(screenInfo.screenPrefab, HUDInstance.transform);
+
+                // Регистрация экрана
+                RegisterScreen(screen.name, screen);  // Регистрируем экран в словаре
+
+                // Устанавливаем активность по умолчанию
+                screen.SetActive(screenInfo.isActiveByDefault);
+
+                // Если экран активен по умолчанию, добавляем его в историю
+                if (screenInfo.isActiveByDefault) {
                     screenHistory.Push(screen);
                 }
-
-                
             }
         }
 
 
-        // public void ShowScreen(GameObject screen) {
-        //     if (screenHistory.Count > 0) {
-        //         screenHistory.Peek().SetActive(false);
-        //     }
-        //
-        //     screen.SetActive(true);
-        //     screenHistory.Push(screen);
-        // }
+        
         public void ShowScreen(string screenName) {
             if (screenRegistry.ContainsKey(screenName)) {
                 HideAllScreens();
@@ -107,7 +110,7 @@ using UnityEngine.SceneManagement;
                     screenHistory.Peek().SetActive(false);
                 }
 
-                screenToOpen.SetActive(true);
+                // screenToOpen.SetActive(true);
                 screenHistory.Push(screenToOpen);
                 Debug.Log(screenHistory.Count + "screenHistory");
             }
@@ -128,7 +131,6 @@ using UnityEngine.SceneManagement;
                 screenRegistry.Add(screenName, screenObject);
             }
 
-            Debug.Log("REGISTER SCREEN");
         }
 
         private void HideAllScreens() {
