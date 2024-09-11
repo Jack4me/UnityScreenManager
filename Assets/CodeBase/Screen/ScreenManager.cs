@@ -36,8 +36,8 @@ using UnityEngine.SceneManagement;
                 DontDestroyOnLoad(gameObject);
             }
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
             LoadHUD();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         void OnDestroy() {
@@ -57,10 +57,10 @@ using UnityEngine.SceneManagement;
         }
 
         private void LoadScreensForScene(string sceneName) {
-            // Поиск конфигурации экранов для текущей сцены
+            RemoveOldScreens();
             foreach (var config in screenConfigs) {
                 if (config.SceneName == sceneName) {
-                 //   InitializeScreens(config.screens);
+                  InitializeScreens(config.screens);
                     return;
                 }
             }
@@ -68,26 +68,24 @@ using UnityEngine.SceneManagement;
             Debug.LogError("Конфигурация экранов для сцены " + sceneName + " не найдена!");
         }
 
-        private void InitializeScreens(GameObject[] screens) {
+        private void RemoveOldScreens() {
+            foreach (Transform child in HUDInstance.transform) {
+                Destroy(child.gameObject);
+            }
+            screenHistory.Clear();
+        }
+
+        private void InitializeScreens(ScreenConfig.ScreenInfo[] screensInfo) {
             screenHistory.Clear();
             if (screenRegistry.Count > 0) {
                 // Инициализируем экраны для данной сцены
-                foreach (GameObject screenPrefab in screens) {
-                    GameObject screen = Instantiate(screenPrefab, HUDInstance.transform);
-                    screen.SetActive(false); // Все экраны скрыты по умолчанию
+                foreach (ScreenConfig.ScreenInfo screenInfo in screensInfo) {
+                    GameObject screen = Instantiate(screenInfo.screenPrefab, HUDInstance.transform);
+                    screen.SetActive(screenInfo.isActiveByDefault); // Активируем или деактивируем экран в зависимости от настроек
                     screenHistory.Push(screen);
                 }
 
-                // Активируем первый экран, например, главное меню
-
-                if (screens.Length > 0 && SceneManager.GetActiveScene().name == "MainMenu") {
-                    
-                    ShowScreen(screens[0].name); // Активируем первый экран через ShowScreen
-                    Debug.Log(screens.Length + "screens.Length" + screens[0].name);
-                }
-                else {
-                    Debug.LogError("Нет экранов для инициализации.");
-                }
+                
             }
         }
 
