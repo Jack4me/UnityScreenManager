@@ -8,8 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6f7018b8b8c149e68c4a65a05ac289be175400/c5/c0698eef/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Screen/PersistentUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ScreenConfig/ScreenConfig.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -79,7 +79,8 @@
       <workItem from="1725698488990" duration="10492000" />
       <workItem from="1725780964325" duration="8273000" />
       <workItem from="1725871918403" duration="2964000" />
-      <workItem from="1725960675844" duration="13384000" />
+      <workItem from="1725960675844" duration="15304000" />
+      <workItem from="1726038595556" duration="9447000" />
     </task>
     <servers />
   </component>

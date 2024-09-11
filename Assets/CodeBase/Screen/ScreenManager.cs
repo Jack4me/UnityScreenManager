@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using CodeBase.ScreenConfigData;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CodeBase.Screen {
+using UnityEngine.SceneManagement;
     public class ScreenManager : MonoBehaviour {
         public static ScreenManager instance;
         public Stack<GameObject> screenHistory = new Stack<GameObject>();
@@ -11,9 +12,20 @@ namespace CodeBase.Screen {
         public GameObject[] screensTest;
 
         // Список конфигураций для каждой сцены
-        [SerializeField] private ScreenConfig.ScreenConfig[] screenConfigs;
+        [SerializeField] private ScreenConfig[] screenConfigs;
 
         private GameObject HUDInstance;
+
+        public void DebugRegisteredScreens() {
+            if (screenRegistry.Count > 0) {
+                foreach (var entry in screenRegistry) {
+                    Debug.Log("Registered screen: " + entry.Key + ", Object: " + entry.Value.name);
+                }
+            }
+            else {
+                Debug.Log("No screens registered in the registry.");
+            }
+        }
 
         void Awake() {
             if (instance != null) {
@@ -24,15 +36,15 @@ namespace CodeBase.Screen {
                 DontDestroyOnLoad(gameObject);
             }
 
-            LoadHUD();
             SceneManager.sceneLoaded += OnSceneLoaded;
+            LoadHUD();
         }
 
         void OnDestroy() {
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
-        void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode) {
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
             LoadScreensForScene(scene.name);
         }
 
@@ -48,7 +60,7 @@ namespace CodeBase.Screen {
             // Поиск конфигурации экранов для текущей сцены
             foreach (var config in screenConfigs) {
                 if (config.SceneName == sceneName) {
-                    InitializeScreens(config.screens);
+                 //   InitializeScreens(config.screens);
                     return;
                 }
             }
@@ -58,20 +70,27 @@ namespace CodeBase.Screen {
 
         private void InitializeScreens(GameObject[] screens) {
             screenHistory.Clear();
+            if (screenRegistry.Count > 0) {
+                // Инициализируем экраны для данной сцены
+                foreach (GameObject screenPrefab in screens) {
+                    GameObject screen = Instantiate(screenPrefab, HUDInstance.transform);
+                    screen.SetActive(false); // Все экраны скрыты по умолчанию
+                    screenHistory.Push(screen);
+                }
 
-            // Инициализируем экраны для данной сцены
-            foreach (GameObject screenPrefab in screens) {
-                GameObject screen = Instantiate(screenPrefab, HUDInstance.transform);
-                screen.SetActive(false); // Все экраны скрыты по умолчанию
-                screenHistory.Push(screen);
-            }
+                // Активируем первый экран, например, главное меню
 
-            // Активируем первый экран, например, главное меню
-            if (screens.Length > 0) {
-                ShowScreen(screens[0].name);
-                Debug.Log(screens.Length + "screens.Length" + screens[0].name);
+                if (screens.Length > 0 && SceneManager.GetActiveScene().name == "MainMenu") {
+                    
+                    ShowScreen(screens[0].name); // Активируем первый экран через ShowScreen
+                    Debug.Log(screens.Length + "screens.Length" + screens[0].name);
+                }
+                else {
+                    Debug.LogError("Нет экранов для инициализации.");
+                }
             }
         }
+
 
         // public void ShowScreen(GameObject screen) {
         //     if (screenHistory.Count > 0) {
@@ -87,13 +106,12 @@ namespace CodeBase.Screen {
                 GameObject screenToOpen = screenRegistry[screenName];
                 screenToOpen.SetActive(true);
                 if (screenHistory.Count > 0) {
-                        screenHistory.Peek().SetActive(false);
-                    }
-                    
+                    screenHistory.Peek().SetActive(false);
+                }
+
                 screenToOpen.SetActive(true);
-                    screenHistory.Push(screenToOpen);
-                    Debug.Log(screenHistory.Count + "screenHistory");
-                
+                screenHistory.Push(screenToOpen);
+                Debug.Log(screenHistory.Count + "screenHistory");
             }
             else {
                 Debug.LogError("Screen not found: " + screenName);
@@ -102,7 +120,6 @@ namespace CodeBase.Screen {
 
         public void GoBack() {
             if (screenHistory.Count > 1) {
-
                 screenHistory.Pop().SetActive(false);
                 screenHistory.Peek().SetActive(true);
             }
@@ -112,6 +129,8 @@ namespace CodeBase.Screen {
             if (!screenRegistry.ContainsKey(screenName)) {
                 screenRegistry.Add(screenName, screenObject);
             }
+
+            Debug.Log("REGISTER SCREEN");
         }
 
         private void HideAllScreens() {
@@ -120,124 +139,4 @@ namespace CodeBase.Screen {
             }
         }
     }
-      // public class ScreenManager : MonoBehaviour
-    // {
-    //     [SerializeField] private GameObject HUDInstance;
-    //     public static ScreenManager instance;
-    //     public Stack<GameObject> screenHistory = new Stack<GameObject>();
-    //
-    //     public GameObject mainMenuScreen;
-    //     public GameObject settingsScreen;
-    //     public GameObject pauseMenuScreen;
-    //     public GameObject shopScreen;
-    //
-    //     void Awake() {
-    //
-    //         mainMenuScreen.SetActive(true);
-    //         screenHistory.Push(mainMenuScreen);
-    //
-    //         if (instance != null) {
-    //             Destroy(gameObject);
-    //         }
-    //         else {
-    //             instance = this;
-    //             DontDestroyOnLoad(gameObject);
-    //         }
-    //
-    //         if (HUDInstance == null) {
-    //             GameObject hudPrefab = Resources.Load<GameObject>("UI/HUD/HUD");
-    //             HUDInstance = Instantiate(hudPrefab);
-    //             DontDestroyOnLoad(HUDInstance);
-    //         } else {
-    //             Debug.Log("HUD уже существует, новый экземпляр не создаётся.");
-    //         }
-    //         SceneManager.sceneLoaded += OnSceneLoaded;
-    //     }
-    //
-    //     void OnDestroy() {
-    //         SceneManager.sceneLoaded -= OnSceneLoaded;
-    //     }
-    //
-    //     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-    //         InitializeHUD();
-    //     }
-    //
-    //     // Метод для инициализации экранов в HUD
-    //     public void InitializeHUD() {
-    //         
-    //         settingsScreen = HUDInstance.transform.Find("SettingsScreen").gameObject;
-    //
-    //
-    //         Debug.Log("HUD экраны инициализированы для новой сцены: " + SceneManager.GetActiveScene().name);
-    //     }
-    //
-    //
-    //   
-    //
-    //     public void ShowScreen(string panelName) {
-    //         HideAllPanels();
-    //
-    //         GameObject screen = null; // Для хранения текущего экрана
-    //
-    //         switch (panelName) {
-    //             case "MainMenu":
-    //                 screen = mainMenuScreen;
-    //                 break;
-    //             case "Settings":
-    //                 screen = settingsScreen;
-    //                 break;
-    //             case "PauseMenu":
-    //                 screen = pauseMenuScreen;
-    //                 break;
-    //             case "Shop":
-    //                 screen = shopScreen;
-    //                 break;
-    //             default:
-    //                 Debug.LogError("Unknown panel: " + panelName);
-    //                 return;
-    //         }
-    //
-    //
-    //         // if (screenHistory.Count > 0) {
-    //         //     // here is a error
-    //         //     screenHistory.Peek().SetActive(false);
-    //         //     Debug.LogError("screenHistory.Count 0");
-    //         // }
-    //
-    //         if (screenHistory.Count > 0) {
-    //             GameObject previousScreen = screenHistory.Peek();
-    //             if (previousScreen != null) {
-    //                 previousScreen.SetActive(false);
-    //             } else {
-    //                 Debug.LogWarning("Предыдущий экран был уничтожен.");
-    //             }
-    //         }
-    //         screen.SetActive(true);
-    //         screenHistory.Push(screen);
-    //     }
-    //
-    //     private void HideAllPanels() {
-    //         if (mainMenuScreen != null) mainMenuScreen.SetActive(false);
-    //         if (settingsScreen != null) settingsScreen.SetActive(false);
-    //         if (pauseMenuScreen != null) pauseMenuScreen.SetActive(false);
-    //         if (shopScreen != null) shopScreen.SetActive(false);
-    //     }
-    //
-    //     public void GoBack() {
-    //         if (screenHistory.Count > 1) {
-    //             // Проверяем, существует ли объект
-    //             GameObject currentScreen = screenHistory.Pop();
-    //             if (currentScreen != null) {
-    //                 currentScreen.SetActive(false);
-    //             }
-    //
-    //             GameObject previousScreen = screenHistory.Peek();
-    //             if (previousScreen != null) {
-    //                 previousScreen.SetActive(true);
-    //             } else {
-    //                 Debug.LogWarning("Previous screen is missing or destroyed.");
-    //             }
-    //         }
-    //     }
-    // }
 }

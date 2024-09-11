@@ -6,7 +6,7 @@ namespace CodeBase.ScreenManager {
        
             [SerializeField] private string screenName;
 
-            void Start() {
+            void Awake() {
                 // Регистрация экрана в реестре ScreenManager
                 CodeBase.Screen.ScreenManager.instance.RegisterScreen(screenName, gameObject);
                 if (gameObject.CompareTag("Menu") ) {

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 141dae55dcc08b94493f5aceb0c80af0, type: 3}
-  m_Name: ScreenConfig
+  m_Name: MenuScreenConfig
   m_EditorClassIdentifier: 
   SceneName: MainMenu
   screens:
   - {fileID: 3663263367005585441, guid: 0a4c2ae8170705b449821cb2a97ffe5c, type: 3}
+  - {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}

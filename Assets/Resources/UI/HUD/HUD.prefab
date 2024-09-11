@@ -126,10 +126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5643561841802251274, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
