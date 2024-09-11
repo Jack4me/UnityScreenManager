@@ -410,6 +410,7 @@ MonoBehaviour:
   screensTest: []
   screenConfigs:
   - {fileID: 11400000, guid: 4b51fe6aed97838468abaa0dad43e19f, type: 2}
+  - {fileID: 11400000, guid: f8412fdb9351b2f4081e27c32046bd7a, type: 2}
 --- !u!114 &1692795060
 MonoBehaviour:
   m_ObjectHideFlags: 0

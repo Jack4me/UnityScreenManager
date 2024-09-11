@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: MainMenu
   screens:
-  - {fileID: 3663263367005585441, guid: 0a4c2ae8170705b449821cb2a97ffe5c, type: 3}
-  - {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+  - screenPrefab: {fileID: 3663263367005585441, guid: 0a4c2ae8170705b449821cb2a97ffe5c, type: 3}
+    isActiveByDefault: 1
+  - screenPrefab: {fileID: 2222957331496745808, guid: 7f996b423a2a4ad419f716e60901e3e3, type: 3}
+    isActiveByDefault: 0
