@@ -3,7 +3,8 @@ using CodeBase.ScreenConfigData;
 using UnityEngine;
 
 namespace CodeBase.Screen {
-using UnityEngine.SceneManagement;
+    using UnityEngine.SceneManagement;
+
     public class ScreenManager : MonoBehaviour {
         public static ScreenManager instance;
         public Stack<GameObject> screenHistory = new Stack<GameObject>();
@@ -15,17 +16,6 @@ using UnityEngine.SceneManagement;
         [SerializeField] private ScreenConfig[] screenConfigs;
 
         private GameObject HUDInstance;
-
-        public void DebugRegisteredScreens() {
-            if (screenRegistry.Count > 0) {
-                foreach (var entry in screenRegistry) {
-                    Debug.Log("Registered screen: " + entry.Key + ", Object: " + entry.Value.name);
-                }
-            }
-            else {
-                Debug.Log("No screens registered in the registry.");
-            }
-        }
 
         void Awake() {
             if (instance != null) {
@@ -60,7 +50,7 @@ using UnityEngine.SceneManagement;
             RemoveOldScreens();
             foreach (var config in screenConfigs) {
                 if (config.SceneName == sceneName) {
-                  InitializeScreens(config.screens);
+                    InitializeScreens(config.screens);
                     return;
                 }
             }
@@ -71,15 +61,15 @@ using UnityEngine.SceneManagement;
         private void RemoveOldScreens() {
             // Удаляем все экраны предыдущей сцены
             foreach (var screen in screenRegistry.Values) {
-                Destroy(screen);  // Удаляем объект экрана из сцены
+                Destroy(screen); // Удаляем объект экрана из сцены
             }
 
-            screenRegistry.Clear();  // Очищаем словарь
+            screenRegistry.Clear(); // Очищаем словарь
             screenHistory.Clear();
         }
 
         private void InitializeScreens(ScreenConfig.ScreenInfo[] screensInfo) {
-            screenHistory.Clear();  // На всякий случай очищаем историю
+            screenHistory.Clear(); // На всякий случай очищаем историю
             screenRegistry.Clear(); // Очищаем реестр
 
             // Инициализация экранов для данной сцены
@@ -87,7 +77,7 @@ using UnityEngine.SceneManagement;
                 GameObject screen = Instantiate(screenInfo.screenPrefab, HUDInstance.transform);
 
                 // Регистрация экрана
-                RegisterScreen(screen.name, screen);  // Регистрируем экран в словаре
+                RegisterScreen(screen.name, screen); // Регистрируем экран в словаре
 
                 // Устанавливаем активность по умолчанию
                 screen.SetActive(screenInfo.isActiveByDefault);
@@ -100,7 +90,6 @@ using UnityEngine.SceneManagement;
         }
 
 
-        
         public void ShowScreen(string screenName) {
             if (screenRegistry.ContainsKey(screenName)) {
                 HideAllScreens();
@@ -130,12 +119,22 @@ using UnityEngine.SceneManagement;
             if (!screenRegistry.ContainsKey(screenName)) {
                 screenRegistry.Add(screenName, screenObject);
             }
-
         }
 
         private void HideAllScreens() {
             foreach (var screen in screenRegistry.Values) {
                 screen.SetActive(false);
+            }
+        }
+
+        public void DebugRegisteredScreens() {
+            if (screenRegistry.Count > 0) {
+                foreach (var entry in screenRegistry) {
+                    Debug.Log("Registered screen: " + entry.Key + ", Object: " + entry.Value.name);
+                }
+            }
+            else {
+                Debug.Log("No screens registered in the registry.");
             }
         }
     }
