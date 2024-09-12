@@ -20,8 +20,21 @@ public class GridManager : MonoBehaviour
             Debug.Log("Cell " + 2 + ", " + 3 + " is now: " + grid[2,3].isEmpty);
     } 
 
+    public void CreateItemOnGrid(int y, int x)
+    {
+
+        if (IsCellEmpty(y, x))
+        {
+            Vector3 position = GridToWorldPosition(y, x);
+            GameObject item = Instantiate(gridItemPrefab, position, Quaternion.identity);
+            PlaceItemInCell(y, x, item);
+            
+        }
+        
+    }
     // Метод для инициализации сетки
-    void InitializeGrid()
+
+    public void InitializeGrid()
     {
         grid = new GridCell[rows, cols];
 
@@ -39,6 +52,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Метод для конвертации позиции из мировых координат в координаты сетки
+
     public Vector2Int WorldToGridPosition(Vector3 worldPosition)
     {
         int x = Mathf.FloorToInt(worldPosition.x / cellSize);
@@ -47,6 +61,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Метод для конвертации координат сетки в мировые координаты
+
     public Vector3 GridToWorldPosition(int x, int y)
     {
         
@@ -61,6 +76,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Метод для проверки, пуста ли ячейка
+
     public bool IsCellEmpty(int y, int x)
     {
         if (y >= 0 && x >= 0 && y < cols && x < rows)  
@@ -71,6 +87,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Метод для размещения предмета в ячейке
+
     public void PlaceItemInCell(int y, int x, GameObject item)
     {
         if (IsCellEmpty(y, x))
@@ -90,6 +107,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Метод для удаления предмета из ячейки
+
     public void RemoveItemFromCell(int y, int x)
     {
         if (!IsCellEmpty(y, x))
@@ -97,20 +115,8 @@ public class GridManager : MonoBehaviour
             grid[y, x].RemoveItem();
         }
     }
-    void CreateItemOnGrid(int y, int x)
-    {
 
-        if (IsCellEmpty(y, x))
-        {
-            Vector3 position = GridToWorldPosition(y, x);
-            GameObject item = Instantiate(gridItemPrefab, position, Quaternion.identity);
-            PlaceItemInCell(y, x, item);
-            
-        }
-        
-    }
-
-    void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
 
