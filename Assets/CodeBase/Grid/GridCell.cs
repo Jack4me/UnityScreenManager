@@ -1,25 +1,27 @@
 ﻿using UnityEngine;
 
-public class GridCell
-{
-    public bool isEmpty;
-    public GameObject item;
-
-    public GridCell()
+namespace CodeBase.Grid {
+    public class GridCell
     {
-        isEmpty = true;
-        item = null;
-    }
+        public bool isEmpty;
+        public GameObject item;
 
-    public void PlaceItem(GameObject newItem)
-    {
-        isEmpty = false;
-        item = newItem;
-    }
+        public GridCell()
+        {
+            isEmpty = true;
+            item = null;
+        }
 
-    public void RemoveItem()
-    {
-        isEmpty = true;
-        item = null;
+        public void PlaceItem(GameObject newItem)
+        {
+            isEmpty = false;
+            item = newItem;
+        }
+
+        public void RemoveItem()
+        {
+            isEmpty = true;
+            item = null;
+        }
     }
 }
